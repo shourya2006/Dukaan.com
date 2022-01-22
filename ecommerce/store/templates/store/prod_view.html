@@ -1,0 +1,45 @@
+{% extends 'store/main.html' %}
+{% block content %}
+<style>
+    .row{
+        justify-content: center;
+    }
+    .thumbnail {
+        box-shadow: none !important;
+    }
+</style>
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                <img src="{{product.imageURL}}" class="thumbnail" style="margin-right: 20px;">
+            </div>
+            <div class="row">
+                <button data-product={{product.id}} data-action="add" class="btn btn-warning rounded update-cart my-5">Add to
+                    cart</button>
+            </div>
+
+        </div>
+
+        <div class="col-md-8">
+            <h2>{{product.name}}</h2>
+            <h5><b>₹{{product.price | floatformat:2}}</b></h5>
+            <div class="container"><strong style="text-decoration: underline; font-size: 20px;">About The Product:</strong><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, expedita numquam? Tenetur deleniti
+                sapiente enim assumenda ipsam odit nemo deserunt, reprehenderit debitis totam, ea molestias quis
+                exercitationem dolor quidem. Possimus asperiores id itaque error beatae ipsum nisi minus eligendi! Quasi
+                molestiae nostrum, laboriosam similique nemo doloribus harum ipsa earum, ipsam commodi possimus repellat
+                placeat tenetur officia omnis sunt! Atque eos eaque ab ipsam voluptas assumenda eveniet omnis impedit
+                ipsa dolore! Veniam voluptatum a corporis sint molestiae quam optio? Culpa, officiis totam quidem eos
+                assumenda itaque pariatur quo exercitationem, officia id soluta doloremque saepe fuga dolores. Autem
+                nemo magni voluptatem, ex sed obcaecati molestias? Illo perferendis debitis officia, molestiae cumque
+                illum aut iste totam asperiores maxime ullam facilis eligendi quas. Cum, eveniet! Necessitatibus aut
+                laboriosam, et illo reiciendis quas corrupti vero quae assumenda ipsam natus deleniti, amet dolorum
+                mollitia maxime voluptate. Ad ipsam delectus repellat, omnis beatae minima, optio architecto velit
+                repellendus, quam numquam? Possimus, deleniti porro. Suscipit, eos voluptatibus! Consequatur,
+                praesentium dolores. Repellat unde dolore magni in consequuntur inventore! Doloribus libero cumque
+                consequuntur minus illo accusantium molestiae commodi tempore amet aspernatur magni, doloremque
+                v!</p></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

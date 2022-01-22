@@ -2,10 +2,12 @@
 {% load static %}
 {% block content %}
 <style>
-    .row{
+    .row {
         justify-content: center;
         text-align: center;
     }
+
+ 
 </style>
 {% if searched %}
 <h3 style="margin: -13px; margin-left: -50px; margin-bottom: 13px;">Search Results for {{searched}}:</h3>
@@ -19,9 +21,10 @@
         <div class="box-element product">
             <h6><strong>{{product}}</strong></h6>
             <hr>
-            <button data-product={{product.id}} data-action="add" class="btn btn-outline-primary update-cart rounded" style="margin-left: -20px !important;">Add to
+            <button data-product={{product.id}} data-action="add" class="btn btn-outline-primary update-cart rounded"
+                style="margin-left: -20px !important;">Add to
                 cart</button>
-            <a href="#" class="btn btn-outline-success rounded">View</a>
+            <a href="/productview/{{product.id}}" class="btn btn-outline-success rounded">QuickView</a>
             <h4 style="float : right;">₹{{product.price | floatformat:2}}</h4>
         </div>
     </div>

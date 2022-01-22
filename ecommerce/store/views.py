@@ -119,7 +119,7 @@ def search(request):
         data = cartData(request)
         cartItems = data["cartItems"]
         products = Product.objects.all()
-        context = {}
+        # context = {}
         searched = request.POST["searched"]
         products_search = Product.objects.filter(name__contains=searched)
         return render(
@@ -134,3 +134,19 @@ def search(request):
         )
     else:
         return render(request, "store/search.html")
+
+
+def prodview(request, myid):
+    data = cartData(request)
+    cartItems = data["cartItems"]
+    products = Product.objects.all()
+    product = Product.objects.filter(id=myid)
+    return render(
+        request,
+        "store/prod_view.html",
+        {
+            "product": product[0],
+            "products": products,
+            "cartItems": cartItems,
+        },
+    )
