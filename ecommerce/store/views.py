@@ -84,3 +84,26 @@ def processOrder(request):
             zipcode=data["shipping"]["zipcode"],
         )
     return JsonResponse("Payment submitted..", safe=False)
+def about(request):
+    data = cartData(request)
+    cartItems = data["cartItems"]
+    products = Product.objects.all()
+    context = {"products": products, "cartItems": cartItems}
+    return render(request , 'store/about.html' , context)
+
+def contact(request):
+    data = cartData(request)
+    cartItems = data["cartItems"]
+    products = Product.objects.all()
+    thank = False
+    if request.method=="POST":
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        phone = request.POST.get('phone', '')
+        desc = request.POST.get('desc', '')
+        contact = Contact(name=name, email=email, phone=phone, desc=desc)
+        contact.save()
+        thank = True
+    context = {"products": products, "cartItems": cartItems , 'thank': thank}
+
+    return render(request, 'store/contact.html', context)

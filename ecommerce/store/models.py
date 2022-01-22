@@ -88,3 +88,13 @@ class ShippingAddress(models.Model):
 
     def __str__(self):
         return self.address
+class Contact(models.Model):
+    msg_id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=50000)
+    email = models.CharField(max_length=700000, default="")
+    phone = models.CharField(max_length=700000, default="")
+    desc = models.CharField(max_length=5000000, default="")
+
+
+    def __str__(self):
+        return self.name
