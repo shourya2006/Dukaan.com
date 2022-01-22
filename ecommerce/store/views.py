@@ -6,6 +6,7 @@ import datetime
 from .utils import cookieCart, cartData, guestOrder
 from django.views.decorators.csrf import csrf_exempt
 
+
 def store(request):
     data = cartData(request)
     cartItems = data["cartItems"]
@@ -57,6 +58,7 @@ def updateItem(request):
 
     return JsonResponse("Item was added", safe=False)
 
+
 @csrf_exempt
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
@@ -84,26 +86,51 @@ def processOrder(request):
             zipcode=data["shipping"]["zipcode"],
         )
     return JsonResponse("Payment submitted..", safe=False)
+
+
 def about(request):
     data = cartData(request)
     cartItems = data["cartItems"]
     products = Product.objects.all()
     context = {"products": products, "cartItems": cartItems}
-    return render(request , 'store/about.html' , context)
+    return render(request, "store/about.html", context)
+
 
 def contact(request):
     data = cartData(request)
     cartItems = data["cartItems"]
     products = Product.objects.all()
     thank = False
-    if request.method=="POST":
-        name = request.POST.get('name', '')
-        email = request.POST.get('email', '')
-        phone = request.POST.get('phone', '')
-        desc = request.POST.get('desc', '')
+    if request.method == "POST":
+        name = request.POST.get("name", "")
+        email = request.POST.get("email", "")
+        phone = request.POST.get("phone", "")
+        desc = request.POST.get("desc", "")
         contact = Contact(name=name, email=email, phone=phone, desc=desc)
         contact.save()
         thank = True
-    context = {"products": products, "cartItems": cartItems , 'thank': thank}
+    context = {"products": products, "cartItems": cartItems, "thank": thank}
 
-    return render(request, 'store/contact.html', context)
+    return render(request, "store/contact.html", context)
+
+
+def search(request):
+    if request.method == "POST":
+        data = cartData(request)
+        cartItems = data["cartItems"]
+        products = Product.objects.all()
+        context = {}
+        searched = request.POST["searched"]
+        products_search = Product.objects.filter(name__contains=searched)
+        return render(
+            request,
+            "store/search.html",
+            {
+                "searched": searched,
+                "products_search": products_search,
+                "products": products,
+                "cartItems": cartItems,
+            },
+        )
+    else:
+        return render(request, "store/search.html")
