@@ -1,25 +1,32 @@
 {% extends 'store/main.html' %}
 {% load static %}
 {% block content %}
+<style>
+    .row{
+        justify-content: center;
+        text-align: center;
+    }
+</style>
 {% if searched %}
-<h3 style="    margin: -13px;
-margin-left: -50px;
-margin-bottom: 13px;">Search Results for {{searched}}:</h3>
+<h3 style="margin: -13px; margin-left: -50px; margin-bottom: 13px;">Search Results for {{searched}}:</h3>
 <br>
-{% for product in products_search %}
-<!-- {{product}} -->
-<div class="col-lg-4">
-    <img class="thumbnail" src="{{product.imageURL}}">
-    <div class="box-element product">
-        <h6><strong>{{product}}</strong></h6>
-        <hr>
-        <button data-product={{product.id}} data-action="add" class="btn btn-outline-primary update-cart">Add to
-            cart</button>
-        <a href="#" class="btn btn-outline-success">View</a>
-        <h4 style="float : right;">₹{{product.price | floatformat:2}}</h4>
+<div class="row">
+    {% for product in products_search %}
+    <!-- {{product}} -->
+
+    <div class="col-lg-4">
+        <img class="thumbnail" src="{{product.imageURL}}">
+        <div class="box-element product">
+            <h6><strong>{{product}}</strong></h6>
+            <hr>
+            <button data-product={{product.id}} data-action="add" class="btn btn-outline-primary update-cart rounded" style="margin-left: -20px !important;">Add to
+                cart</button>
+            <a href="#" class="btn btn-outline-success rounded">View</a>
+            <h4 style="float : right;">₹{{product.price | floatformat:2}}</h4>
+        </div>
     </div>
+    {% endfor %}
 </div>
-{% endfor %}
 {% else %}
 <h3>Pls enter something to be searched...</h3>
 {% endif %}
