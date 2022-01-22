@@ -3,7 +3,8 @@
 <html>
 
 <head>
-  <title>Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books &amp; More. Best Offers! | Dukan.com</title>
+  <title>Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books &amp; More. Best Offers! |
+    Dukan.com</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
 
@@ -80,8 +81,8 @@
         </li>
 
       </ul>
-      <form class="form-inline" method= POST action = "{% url 'search' %}">{% csrf_token %}
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name = "searched">
+      <form class="form-inline" method=POST action="{% url 'search' %}">{% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searched">
         <button class="btn btn-warning my-2 my-sm-0 rounded" type="submit">Search</button>
       </form>
       <div class="form-inline my-2 my-lg-0">
@@ -98,7 +99,44 @@
     <br />
     {% block content %} {% endblock content %}
   </div>
+  <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+  <!--FOOTER-->
+  <footer class="mt-3">
+    <div class="top_header">
+      <section>
+        <span><i class="fa fa-map-marker"></i></span>
+        <span>Street, full address, state/province, country, pincode</span>
+      </section>
+      <section>
+        <span><i class="fa fa-phone"></i></span>
+        <span>(00) 0000 0000</span>
+      </section>
+      <section>
+        <span><i class="fa fa-envelope"></i></span>
+        <span>info@websitename.com</span>
+      </section>
+    </div>
+    <span class="border-shape"></span>
+    <div class="bottom_content">
+      <section>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="https://www.youtube.com/c/CyberProgrammer" target="_blank"><i class="fa fa-youtube"></i></a>
+        <a href="#"><i class="fa fa-telegram"></i></a>
+      </section>
+      <section>
+        <a href="{% url 'store'%}">Home</a>
+        <a href="{% url 'AboutUs' %}">About us</a>
+        <a href="{% url 'ContactUs' %}">Contact Us</a>
+      </section>
+    </div>
+    <div class="copyright">
+      Copyright © 2022 Dukaan.com - All rights reserved
+    </div>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
