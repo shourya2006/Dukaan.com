@@ -5,13 +5,18 @@ import json
 import datetime
 from .utils import cookieCart, cartData, guestOrder
 from django.views.decorators.csrf import csrf_exempt
-
+# Import for paginating the page
+from django.core.paginator import Paginator
 
 def store(request):
     data = cartData(request)
     cartItems = data["cartItems"]
     products = Product.objects.all()
-    context = {"products": products, "cartItems": cartItems}
+    p = Paginator(Product.objects.all(), 6)
+    page = request.GET.get('page')
+    prods = p.get_page(page)
+    nums = "a" * prods.paginator.num_pages
+    context = {"products": products, "cartItems": cartItems , 'prods' : prods , 'nums' : nums}
     return render(request, "store/store.html", context)
 
 
