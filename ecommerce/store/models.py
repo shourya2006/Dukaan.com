@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -12,7 +13,9 @@ class Customer(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=2000, null=True)
+    name = models.CharField(max_length=20000, null=True)
+    category = models.CharField(max_length=20000 , null=True)
+   
     price = models.FloatField()
     digital = models.BooleanField(default=False, null=True, blank=False)
     image = models.ImageField(null=True, blank=True)
