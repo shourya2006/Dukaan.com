@@ -64,7 +64,9 @@ h6 {
 }
 
 .row-image {
-  width: 100px;
+  width: 100%;
+  object-fit: contain;
+  height: 6rem;
 }
 
 .form-field {
@@ -74,8 +76,8 @@ h6 {
 }
 
 .cart-row {
+  align-items: center;
   display: flex;
-  align-items: flex-stretch;
   padding-bottom: 10px;
   margin-bottom: 10px;
   border-bottom: 1px solid #ececec;
