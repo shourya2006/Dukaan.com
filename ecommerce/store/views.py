@@ -126,7 +126,7 @@ def search(request):
         products = Product.objects.all()
         # context = {}
         searched = request.POST["searched"]
-        products_search = Product.objects.filter(name__contains=searched)
+        products_search = Product.objects.filter(category__contains=searched)
         return render(
             request,
             "store/search.html",
